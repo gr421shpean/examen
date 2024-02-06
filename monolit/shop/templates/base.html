@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}{% endblock %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body style="background-color: rgb(203, 192, 211); margin-left: 60px">
+    <div style="margin: 20px 0">
+        {% if user.is_authenticated %}
+        <nav style="background-color: rgb(247, 225, 215); height:50px; display:flex; justify-content:center; align-items:center; gap:90px">
+            <a href="{% url 'index' %}"><p>Главная</p></a>
+            <a href="{% url 'service' %}"><p>Товары</p></a>
+            <a href="{% url 'index' %}"><p>О нас</p></a>
+            <a href="{% url 'profile' user.pk %}"><p>Профиль</p></a>
+            <a href="{% url 'logout' %}"><p>Выйти</p></a>
+        </nav>
+        {% else %}
+        <nav style="background-color: rgb(247, 225, 215); height:50px; display:flex; justify-content:center; align-items:center; gap:90px">
+            <a href="{% url 'index' %}"><p>Главная</p></a>
+            <a href="{% url 'service' %}"><p>Товары</p></a>
+            <a href="{% url 'index' %}"><p>О нас</p></a>
+            <a href="{% url 'login' %}"><p>Войти</p></a>
+            <a href="{% url 'register' %}"><p>Зарегистрироваться</p></a>
+        </nav>
+        {% endif %}
+    </div>
+    <div>{% block content %}{% endblock %}</div>
+</body>
+</html>

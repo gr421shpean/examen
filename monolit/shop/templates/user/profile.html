@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>{{ user.username }}</title>{% endblock %}
+{% block content %}
+    <h1>Профиль {{ user.username }}</h1>
+    {% if user.avatar %}
+        <img style="width: 200px; height: 200px;" src="{{ user.avatar.url }}" alt="Аватарка"><br><br>
+    {% endif %}
+    <p>E-mail: {{ user.email }}</p>
+    <hr>
+
+    <h3>Заказанные товары:</h3>
+{% endblock %}
